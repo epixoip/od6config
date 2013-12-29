@@ -16,6 +16,7 @@
 #include "od6config.h"
 #include "adl.h"
 
+
 ADL_MAIN_CONTROL_CREATE ADL_Main_Control_Create;
 ADL_MAIN_CONTROL_DESTROY ADL_Main_Control_Destroy;
 ADL_ADAPTER_NUMBEROFADAPTERS_GET ADL_Adapter_NumberOfAdapters_Get;
@@ -35,7 +36,6 @@ ADL_OVERDRIVE6_FANSPEED_SET ADL_Overdrive6_FanSpeed_Set;
 ADL_OVERDRIVE6_STATE_SET ADL_Overdrive6_State_Set;
 ADL_OVERDRIVE6_POWERCONTROL_SET ADL_Overdrive6_PowerControl_Set;
 
-
 void *adl_alloc (int size)
 {
 	void *buf = (void *) malloc (size);
@@ -50,7 +50,6 @@ void adl_free (void **buf)
 	*buf = NULL;
 }
 
-
 void *get_func_addr (void *dll, const char *name)
 {
 	void *ptr = dlsym (dll, name);
@@ -63,7 +62,6 @@ void *get_func_addr (void *dll, const char *name)
 
 	return ptr;
 }
-
 
 int adl_init ()
 {
@@ -107,9 +105,7 @@ int init_adapters (device_t *devices)
 	int od_version = 0;
 	int adl_num_adapters = 0;
 	int active_devs[MAX_DEVS];
-
 	LPAdapterInfo adapter_info;
-
 
 	ADL_Main_Control_Create (adl_alloc, 1);
 	ADL_Adapter_NumberOfAdapters_Get (&adl_num_adapters);
@@ -117,11 +113,8 @@ int init_adapters (device_t *devices)
 	if (adl_num_adapters < 1)
 		return (-1);
 
-
 	adapter_info = (AdapterInfo *) calloc (adl_num_adapters, sizeof (AdapterInfo));
-
 	ADL_Adapter_AdapterInfo_Get (adapter_info, adl_num_adapters * sizeof (AdapterInfo));
-
 
 	for (i = 0; i < adl_num_adapters; i++)
 	{
@@ -142,7 +135,6 @@ int init_adapters (device_t *devices)
 		active_devs[active_cnt++] = i;
 	}
 
-
 	for (i = 0; i < active_cnt; i++)
 	{
 		devices[i].id = i;
@@ -150,9 +142,7 @@ int init_adapters (device_t *devices)
 		memcpy (&devices[i].name, adapter_info[active_devs[i]].strAdapterName, strlen (adapter_info[active_devs[i]].strAdapterName) * sizeof (char));
 	}
 
-
 	free (adapter_info);
 
 	return active_cnt;
 }
-
