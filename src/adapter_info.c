@@ -36,7 +36,6 @@ void get_adapter_info (device_t *adapter)
 	ADLOD6ThermalControllerCaps fan_caps = {0};
 	ADLOD6PowerControlInfo powertune = {0};
 
-
 	ADL_Overdrive6_Capabilities_Get (adapter->real_id, &caps);
 
 	adapter->core_clock_min  = caps.sEngineClockRange.iMin  / 100;
@@ -46,7 +45,6 @@ void get_adapter_info (device_t *adapter)
 	adapter->mem_clock_max   = caps.sMemoryClockRange.iMax  / 100;
 	adapter->mem_clock_step  = caps.sMemoryClockRange.iStep / 100;
 
-
 	ADL_Overdrive6_ThermalController_Caps (adapter->real_id, &fan_caps);
 
 	adapter->fan_min_rpm     = fan_caps.iFanMinRPM;
@@ -54,17 +52,13 @@ void get_adapter_info (device_t *adapter)
 	adapter->fan_min_percent = fan_caps.iFanMinPercent;
 	adapter->fan_max_percent = fan_caps.iFanMaxPercent;
 
-
 	ADL_Overdrive6_FanSpeed_Get (adapter->real_id, &fan_info);
 
 	adapter->fan_rpm_current     = fan_info.iFanSpeedRPM;
 	adapter->fan_percent_current = fan_info.iFanSpeedPercent;
 
-
 	ADL_Overdrive6_Temperature_Get (adapter->real_id, &temp);
-
 	adapter->temp = temp / 1000;
-
 
 	bufsize = sizeof (ADLOD6StateInfo) + sizeof (ADLOD6PerformanceLevel);
 
@@ -80,7 +74,6 @@ void get_adapter_info (device_t *adapter)
 
 	free (default_state);
 
-
 	custom_state  = (ADLOD6StateInfo *) calloc (1, bufsize);
 	custom_state->iNumberOfPerformanceLevels = 2;
 
@@ -93,13 +86,11 @@ void get_adapter_info (device_t *adapter)
 
 	free (custom_state);
 
-
 	ADL_Overdrive6_CurrentStatus_Get (adapter->real_id, &current);
 
 	adapter->core_clock_current = current.iEngineClock/ 100;
 	adapter->mem_clock_current  = current.iMemoryClock/ 100;
 	adapter->utilization	    = current.iActivityPercent;
-
 
 	ADL_Overdrive6_PowerControl_Caps (adapter->real_id, &pt_caps);
 
@@ -112,4 +103,3 @@ void get_adapter_info (device_t *adapter)
 	adapter->pt_max  = powertune.iMaxValue;
 	adapter->pt_step = powertune.iStepValue;
 }
-
