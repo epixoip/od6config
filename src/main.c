@@ -68,19 +68,18 @@ char * const set_subopts[] =
         NULL
 };
 
-char * const adapter_opts[] = {	NULL };
+char * const adapter_opts[] = { NULL };
 
 static struct option long_options[] =
 {
-	{ "help",    no_argument,       0,     'h' },
-	{ "list",    no_argument,       &_list, 1  },
-	{ "autofix", no_argument,       &_fix,  1  },
-	{ "adapter", required_argument, 0,     'a' },
-	{ "get",     required_argument, 0,     'g' },
-	{ "set",     required_argument, 0,     's' },
-	{ 0,         0,	                0,      0  }
+	{ "help",	no_argument,		0	'h' },
+	{ "list",	no_argument,		&_list,	 1  },
+	{ "autofix",	no_argument,		&_fix,	 1  },
+	{ "adapter",	required_argument,	0,	'a' },
+	{ "get",	required_argument,	0	'g' },
+	{ "set",	required_argument,	0	's' },
+	{ 0		0,			0	 0  }
 };
-
 
 void print_help ()
 {
@@ -111,7 +110,6 @@ void print_help ()
 	puts ("	power=<value>		Set the PowerTune value\n\n");
 }
 
-
 int main (int argc, char **argv)
 {
 	int i = 0;
@@ -119,7 +117,6 @@ int main (int argc, char **argv)
 	int opts = 0;
 	char *subopts, *value;
 	device_t devices[MAX_DEVS] = {{0}};
-
 
 	if (adl_init() < 0)
 	{
@@ -132,7 +129,6 @@ int main (int argc, char **argv)
 		fprintf (stderr, "No Overdrive6 devices found!\n");
 		return (2);
 	}
-
 
 	while (1)
 	{
@@ -232,13 +228,11 @@ int main (int argc, char **argv)
 		}
 	}
 
-
 	if (!_get && !_set && !_list && !_fix)
 	{
 		print_help ();
 		return (3);
 	}
-
 
 	if (!adapter_cnt || _list)
 	{
@@ -253,14 +247,12 @@ int main (int argc, char **argv)
 		return (4);
 	}
 
-
 	for (i = 0; i < adapter_cnt; i++)
 		if (device_list[i] > num_devices - 1)
 		{
 			fprintf (stderr, "Device %d does not exist!\n", device_list[i]);
 			return (5);
 		}
-
 
 	printf ("\n");
 
@@ -306,4 +298,3 @@ int main (int argc, char **argv)
 
 	return (0);
 }
-
