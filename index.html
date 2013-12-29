@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>od6config by epixoip</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>od6config</h1>
+        <h2>Configuration tool for AMD Overdrive6 devices.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/epixoip/od6config/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/epixoip/od6config/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/epixoip/od6config" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h2>
+<a name="install" class="anchor" href="#install"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<p>Download the AMD Display Library SDK 6.0 or newer, and extract the archive into the <em>ADL_SDK</em> directory. Then, issue the typical ``make &amp;&amp; sudo make install'' to build and install.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<pre><code>Usage: od6config [OPTIONS] [SUBOPTIONS] ...
+
+--list
+
+    Lists all detected and supported display adapters.
+
+--adapter=ADAPTERLIST
+
+    Selects which adapters returned by --list should be affected.
+    ADAPTERLIST contains a comma-separated list of adapter index
+    numbers. If ADAPTERLIST is omitted, all adapters will be affected.
+
+--autofix
+
+    Sets minclock equal to maxclock, PowerTune to +50, and fan speed to 100%.
+
+--get=SUBOPTS
+
+    Display various information as read from the device. SUBOPTS contains a
+    comma-separated list of which information to display.
+    Valid SUBOPTS values:
+        clocks                  Current core and memory clock values
+        fan                     Current fan speed
+        temp                    Current temperature in Celsius
+
+--set=SUBOPTS
+
+    Write the specified configuration values to the device. SUBOPTS contains a
+    comma-separated list of config key-value pairs.
+    Valid SUBOPTS values:
+        core=&lt;value&gt;            Set the core clock frequency
+        mem=&lt;value&gt;             Set the memor clock frequency
+        fan=&lt;value&gt;             Set the fan speed percentage
+        power=&lt;value&gt;           Set the PowerTune value
+</code></pre>
+
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>List all Overdrive6 devices:</p>
+
+<pre><code>od6config --list
+</code></pre>
+
+<p>Show temperature and fan speed of all devices:</p>
+
+<pre><code>od6config --get temp,fan
+</code></pre>
+
+<p>Show clock rates for devices 2 &amp; 3 only:</p>
+
+<pre><code>od6config --adapter 2,3 --get clocks
+</code></pre>
+
+<p>Automatically set all devices in an optimal configuration:</p>
+
+<pre><code>od6config --autofix
+</code></pre>
+
+<p>Manually set the core and memory clocks on all devices to 1050 Mhz core, 1375 Mhz memory:</p>
+
+<pre><code>od6config --set core=1050,mem=1375
+</code></pre>
+
+<p>Set the core clock to 1100 Mhz, the memory clock to 1250 Mhz, the fan speed to 90%, and PowerTune to +40 on the first device only:</p>
+
+<pre><code>od6config --adapter 0 --set core=1100,mem=1250,fan=90,power=+40
+</code></pre>
+
+<p>... So on and so forth.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
