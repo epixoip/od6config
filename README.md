@@ -3,14 +3,11 @@ od6config
 
 Configuration tool for AMD Overdrive6 devices.
 
-
 ##Status##
 Hastily developed, but mostly feature-complete.
 
-
 ##Install##
-Typical ``make && make install'' 
-
+Download the AMD Display Library SDK 6.0 or newer, and extract the archive into the _ADL_SDK_ directory. Then, issue the typical ``make && sudo make install'' to build and install.
 
 ##Usage##
 ```
