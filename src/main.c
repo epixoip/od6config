@@ -72,13 +72,13 @@ char * const adapter_opts[] = { NULL };
 
 static struct option long_options[] =
 {
-	{ "help",	no_argument,		0	'h' },
-	{ "list",	no_argument,		&_list,	 1  },
-	{ "autofix",	no_argument,		&_fix,	 1  },
-	{ "adapter",	required_argument,	0,	'a' },
-	{ "get",	required_argument,	0	'g' },
-	{ "set",	required_argument,	0	's' },
-	{ 0		0,			0	 0  }
+	{ "help",     no_argument,       0,      'h' },
+	{ "list",     no_argument,       &_list,  1  },
+	{ "autofix",  no_argument,       &_fix,   1  },
+	{ "adapter",  required_argument, 0,      'a' },
+	{ "get",      required_argument, 0,      'g' },
+	{ "set",      required_argument, 0,      's' },
+	{ 0,          0,                 0,       0  }
 };
 
 void print_help ()
