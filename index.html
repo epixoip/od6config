@@ -50,36 +50,36 @@
 
 --list
 
-    Lists all detected and supported display adapters.
+  Lists all detected and supported display adapters.
 
 --adapter=ADAPTERLIST
 
-    Selects which adapters returned by --list should be affected.
-    ADAPTERLIST contains a comma-separated list of adapter index
-    numbers. If ADAPTERLIST is omitted, all adapters will be affected.
+  Selects which adapters returned by --list should be affected.
+  ADAPTERLIST contains a comma-separated list of adapter index
+  numbers. If ADAPTERLIST is omitted, all adapters will be affected.
 
 --autofix
 
-    Sets minclock equal to maxclock, PowerTune to +50, and fan speed to 100%.
+  Sets minclock equal to maxclock, PowerTune to +50, and fan speed to 100%.
 
 --get=SUBOPTS
 
-    Display various information as read from the device. SUBOPTS contains a
-    comma-separated list of which information to display.
-    Valid SUBOPTS values:
-        clocks                  Current core and memory clock values
-        fan                     Current fan speed
-        temp                    Current temperature in Celsius
+  Display various information as read from the device. SUBOPTS contains a
+  comma-separated list of which information to display.
+  Valid SUBOPTS values:
+    clocks          Current core and memory clock values
+    fan             Current fan speed
+    temp            Current temperature in Celsius
 
 --set=SUBOPTS
 
-    Write the specified configuration values to the device. SUBOPTS contains a
-    comma-separated list of config key-value pairs.
-    Valid SUBOPTS values:
-        core=&lt;value&gt;            Set the core clock frequency
-        mem=&lt;value&gt;             Set the memor clock frequency
-        fan=&lt;value&gt;             Set the fan speed percentage
-        power=&lt;value&gt;           Set the PowerTune value
+  Write the specified configuration values to the device.
+  SUBOPTS contains a comma-separated list of config key-value pairs.
+  Valid SUBOPTS values:
+    core=&lt;value&gt;    Set the core clock frequency
+    mem=&lt;value&gt;     Set the memor clock frequency
+    fan=&lt;value&gt;     Set the fan speed percentage
+    power=&lt;value&gt;   Set the PowerTune value
 </code></pre>
 
 <h2>
