@@ -16,7 +16,6 @@
 #include "od6config.h"
 #include "adl.h"
 
-
 ADL_MAIN_CONTROL_CREATE ADL_Main_Control_Create;
 ADL_MAIN_CONTROL_DESTROY ADL_Main_Control_Destroy;
 ADL_ADAPTER_NUMBEROFADAPTERS_GET ADL_Adapter_NumberOfAdapters_Get;
@@ -35,10 +34,8 @@ ADL_OVERDRIVE6_POWERCONTROL_GET ADL_Overdrive6_PowerControl_Get;
 ADL_OVERDRIVE6_FANSPEED_SET ADL_Overdrive6_FanSpeed_Set;
 ADL_OVERDRIVE6_STATE_SET ADL_Overdrive6_State_Set;
 ADL_OVERDRIVE6_POWERCONTROL_SET ADL_Overdrive6_PowerControl_Set;
-
 ADL_OVERDRIVE6_TARGETTEMPERATUREDATA_GET ADL_Overdrive6_TargetTemperatureData_Get;
 ADL_OVERDRIVE6_TARGETTEMPERATUREDATA_SET ADL_Overdrive6_TargetTemperatureData_Set;
-
 
 void *adl_alloc (int size)
 {
@@ -101,7 +98,6 @@ int adl_init ()
 
 	return (0);
 }
-
 
 int init_adapters (device_t *devices)
 {

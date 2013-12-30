@@ -122,4 +122,3 @@ void set_targettemp (device_t *adapter, int target)
 	else
 		printf ("    Failed to set target temperature!\n");
 }
-

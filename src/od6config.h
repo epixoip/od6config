@@ -56,4 +56,3 @@ typedef struct
 	int pt_default;
 	int pt_current;
 } device_t;
-
