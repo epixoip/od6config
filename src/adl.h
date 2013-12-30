@@ -35,6 +35,11 @@ typedef int (*ADL_OVERDRIVE6_FANSPEED_SET) (int iAdapterIndex, ADLOD6FanSpeedVal
 typedef int (*ADL_OVERDRIVE6_STATE_SET) (int iAdapterIndex, int iStateType, ADLOD6StateInfo *lpStateInfo);
 typedef int (*ADL_OVERDRIVE6_POWERCONTROL_SET) (int iAdapterIndex, int iValue);
 
+typedef int (*ADL_OVERDRIVE6_TARGETTEMPERATUREDATA_GET) (int iAdapterIndex, int *lpCurrentValue, int *lpDefaultValue);
+typedef int (*ADL_OVERDRIVE6_TARGETTEMPERATUREDATA_SET) (int iAdapterIndex, int iCurrentValue);
+
+
+
 extern ADL_MAIN_CONTROL_CREATE ADL_Main_Control_Create;
 extern ADL_MAIN_CONTROL_DESTROY ADL_Main_Control_Destroy;
 extern ADL_ADAPTER_NUMBEROFADAPTERS_GET ADL_Adapter_NumberOfAdapters_Get;
@@ -54,3 +59,5 @@ extern ADL_OVERDRIVE6_FANSPEED_SET ADL_Overdrive6_FanSpeed_Set;
 extern ADL_OVERDRIVE6_STATE_SET ADL_Overdrive6_State_Set;
 extern ADL_OVERDRIVE6_POWERCONTROL_SET ADL_Overdrive6_PowerControl_Set;
 
+extern ADL_OVERDRIVE6_TARGETTEMPERATUREDATA_GET ADL_Overdrive6_TargetTemperatureData_Get;
+extern ADL_OVERDRIVE6_TARGETTEMPERATUREDATA_SET ADL_Overdrive6_TargetTemperatureData_Set;

@@ -15,4 +15,4 @@ extern void print_info (device_t *adapter);
 extern void set_fanspeed (device_t *adapter, int speed);
 extern void set_clocks (device_t *adapter, int core, int mem);
 extern void set_powertune (device_t *adapter, int threshold);
-
+extern void set_targettemp (device_t *adapter, int target);

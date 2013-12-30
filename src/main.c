@@ -26,13 +26,15 @@ int _core = 0;
 int _mem = 0;
 int _get_fan = 0;
 int _set_fan = 0;
-int _temp = 0;
+int _get_temp = 0;
+int _set_temp = 0;
 int _power = 0;
 int _clocks = 0;
 int core_clock = 0;
 int mem_clock = 0;
 int fanspeed = 0;
 int power = 0;
+int target = 0;
 int adapter_cnt = 0;
 int device_list[MAX_DEVS];
 
@@ -48,7 +50,8 @@ enum
 	SET_CORE,
 	SET_MEM,
 	SET_FAN,
-	SET_POWER
+	SET_POWER,
+	SET_TEMP
 };
 
 char * const get_subopts[] =
@@ -65,6 +68,7 @@ char * const set_subopts[] =
         [SET_MEM]    = "mem",
         [SET_FAN]    = "fan",
         [SET_POWER]  = "power",
+	[SET_TEMP]   = "temp",
         NULL
 };
 
@@ -92,22 +96,24 @@ void print_help ()
 	puts ("    ADAPTERLIST contains a comma-separated list of adapter index");
 	puts ("    numbers. If ADAPTERLIST is omitted, all adapters will be affected.\n");
 	puts ("--autofix\n");
-	puts ("    Sets minclock equal to maxclock, PowerTune to +50, and fan speed to 100%.\n");
+	puts ("    Sets minclock equal to maxclock, and PowerTune, fan speed, and");
+	puts ("    target temperature all to their maximum default values.\n");
 	puts ("--get=SUBOPTS\n");
-	puts ("    Display various information as read from the device. SUBOPTS contains a");
-	puts ("    comma-separated list of which information to display.");
+	puts ("    Display various information as read from the device.");
+	puts ("    SUBOPTS contains a comma-separated list of directives.");
 	puts ("    Valid SUBOPTS values:");
 	puts ("	clocks			Current core and memory clock values");
 	puts ("	fan			Current fan speed");
 	puts ("	temp			Current temperature in Celsius\n");
 	puts ("--set=SUBOPTS\n");
-	puts ("    Write the specified configuration values to the device. SUBOPTS contains a");
-	puts ("    comma-separated list of config key-value pairs.");
+	puts ("    Write the specified configuration values to the device.");
+	puts ("    SUBOPTS contains a comma-separated list of config key-value pairs.");
 	puts ("    Valid SUBOPTS values:");
 	puts ("	core=<value>		Set the core clock frequency");
 	puts ("	mem=<value>		Set the memor clock frequency");
 	puts ("	fan=<value>		Set the fan speed percentage");
-	puts ("	power=<value>		Set the PowerTune value\n\n");
+	puts ("	power=<value>		Set the PowerTune value");
+	puts ("	temp=<value>		Set the target temperature for PowerTune\n\n");
 }
 
 int main (int argc, char **argv)
@@ -167,7 +173,7 @@ int main (int argc, char **argv)
 							_get_fan = 1;
 							break;
 						case GET_TEMP:
-							_temp = 1;
+							_get_temp = 1;
 							break;
 						default:
 							fprintf (stderr, "Syntax error: Unknown suboption for --get: `%s'\n", value);
@@ -215,6 +221,15 @@ int main (int argc, char **argv)
 							}
 							_power = 1;
 							power = atoi (value);
+							break;
+						case SET_TEMP:
+							if (value == NULL)
+							{
+								fprintf (stderr, "Syntax error: `power' requires a value.\n");
+								return (5);
+							}
+							_set_temp = 1;
+							target = atoi (value);
 							break;
 						default:
 							fprintf (stderr, "Syntax error: Unknown suboption for --set: `%s'\n", value);
@@ -270,6 +285,7 @@ int main (int argc, char **argv)
 			set_clocks (&devices[device_list[i]], devices[device_list[i]].core_clock_custom_range_max, devices[device_list[i]].mem_clock_custom_range_max);
 			set_fanspeed (&devices[device_list[i]], devices[device_list[i]].fan_max_percent);
 			set_powertune (&devices[device_list[i]], devices[device_list[i]].pt_max);
+			set_targettemp (&devices[device_list[i]], devices[device_list[i]].target_temp_default);
 		}	
 		else if (_set)
 		{
@@ -282,13 +298,14 @@ int main (int argc, char **argv)
 
 			if (_set_fan)   set_fanspeed (&devices[device_list[i]], fanspeed);
 			if (_power) set_powertune (&devices[device_list[i]], power);
+			if (_set_temp) set_targettemp (&devices[device_list[i]], target);
 		}
 
 		if (_get)
 		{
 			if (_clocks) print_clocks (&devices[device_list[i]]);
 			if (_get_fan)    print_fanspeed (&devices[device_list[i]]);
-			if (_temp)   print_temp (&devices[device_list[i]]);
+			if (_get_temp)   print_temp (&devices[device_list[i]]);
 		}
 
 		printf ("\n");

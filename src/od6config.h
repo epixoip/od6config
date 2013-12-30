@@ -26,7 +26,9 @@ typedef struct
 	int fan_rpm_current;
 	int fan_percent_current;
 
-	float temp;
+	int temp;
+	int target_temp_current;
+	int target_temp_default;
 
 	int core_clock_min;
 	int core_clock_max;

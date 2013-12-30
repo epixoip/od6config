@@ -16,18 +16,16 @@
 #include "adl.h"
 #include "functions.h"
 
-
 void print_fanspeed (device_t *adapter)
 {
 	printf ("    Fan Speed           : %d%% (%d RPM)\n", adapter->fan_percent_current, adapter->fan_rpm_current);
 }
 
-
 void print_temp (device_t *adapter)
 {
-	printf ("    Temperature         : %.1f C\n", adapter->temp);
+	printf ("    Current Temperature : %d C\n", adapter->temp);
+	printf ("    Target  Temperature : %d C\n", adapter->target_temp_current);
 }
-
 
 void print_clocks (device_t *adapter)
 {
@@ -37,7 +35,6 @@ void print_clocks (device_t *adapter)
 	printf ("    Peak Clocks         : %-d\t\t%-d\n", adapter->core_clock_custom_range_max, adapter->mem_clock_custom_range_max);
 	printf ("    GPU Load            : %-d%%\n", adapter->utilization);
 }
-
 
 void set_fanspeed (device_t *adapter, int speed)
 {
@@ -56,7 +53,6 @@ void set_fanspeed (device_t *adapter, int speed)
 	else
 		printf ("    Failed to set fan speed!\n");
 }
-
 
 void set_clocks (device_t *adapter, int core, int mem)
 {
@@ -99,7 +95,6 @@ void set_clocks (device_t *adapter, int core, int mem)
 		printf ("    Failed to set clocks!\n");
 }
 
-
 void set_powertune (device_t *adapter, int threshold)
 {
 	if (threshold < adapter->pt_min || threshold > adapter->pt_max)
@@ -118,5 +113,13 @@ void set_powertune (device_t *adapter, int threshold)
 		printf ("    New powertune value : %d\n", threshold);
 	else
 		printf ("    Failed to set powertune threshold!\n");
+}
+
+void set_targettemp (device_t *adapter, int target)
+{
+	if (ADL_Overdrive6_TargetTemperatureData_Set (adapter->real_id, target) == ADL_OK)
+		printf ("    New target temp     : %d\n", target);
+	else
+		printf ("    Failed to set target temperature!\n");
 }
 
