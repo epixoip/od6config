@@ -92,7 +92,6 @@ int adl_init ()
 	ADL_Overdrive6_FanSpeed_Set  = (ADL_OVERDRIVE6_FANSPEED_SET) get_func_addr (dll, "ADL_Overdrive6_FanSpeed_Set");
 	ADL_Overdrive6_State_Set = (ADL_OVERDRIVE6_STATE_SET) get_func_addr (dll, "ADL_Overdrive6_State_Set");
 	ADL_Overdrive6_PowerControl_Set = (ADL_OVERDRIVE6_POWERCONTROL_SET) get_func_addr (dll, "ADL_Overdrive6_PowerControl_Set");
-
 	ADL_Overdrive6_TargetTemperatureData_Get = (ADL_OVERDRIVE6_TARGETTEMPERATUREDATA_GET) get_func_addr (dll, "ADL_Overdrive6_TargetTemperatureData_Get");
 	ADL_Overdrive6_TargetTemperatureData_Set = (ADL_OVERDRIVE6_TARGETTEMPERATUREDATA_SET) get_func_addr (dll, "ADL_Overdrive6_TargetTemperatureData_Set");
 
