@@ -71,8 +71,8 @@ Manually set the core and memory clocks on all devices to 1050 Mhz core, 1375 Mh
 
     od6config --set core=1050,mem=1375
 
-Set the core clock to 1100 Mhz, the memory clock to 1250 Mhz, the fan speed to 90%, and PowerTune to +40 on the first device only:
+Set the core clock to 1100 Mhz, the memory clock to 1250 Mhz, the fan speed to 90%, PowerTune to +45%, and target temperature to 90C on the first device only:
 
-    od6config --adapter 0 --set core=1100,mem=1250,fan=90,power=+40
+    od6config --adapter 0 --set core=1100,mem=1250,fan=90,power=+45,temp=90
 
 ... So on and so forth.
