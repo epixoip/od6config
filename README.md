@@ -25,7 +25,8 @@ Usage: od6config [OPTIONS] [SUBOPTIONS] ...
 
 --autofix
 
-    Sets minclock equal to maxclock, PowerTune to +50, and fan speed to 100%.
+    Sets minclock equal to maxclock, and PowerTune, fan speed, and
+    target temperature all to their maximum default values.
 
 --get=SUBOPTS
 
@@ -44,7 +45,8 @@ Usage: od6config [OPTIONS] [SUBOPTIONS] ...
         core=<value>            Set the core clock frequency
         mem=<value>             Set the memor clock frequency
         fan=<value>             Set the fan speed percentage
-        power=<value>           Set the PowerTune value
+        power=<value>           Set the target PowerTune value
+        temp=<value>            Set the target temperature
 ```
 
 ##Examples##
