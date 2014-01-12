@@ -12,11 +12,11 @@ $(OUT): $(OBJS)
 
 install:
 	install -d -m 0755 -o root -g root $(DESTDIR)/usr
-	install -d -m 0755 -o root -g root $(DESTDIR)/usr/sbin
-	install -m 0755 -o root -g root $(OUT) $(DESTDIR)/usr/sbin/
+	install -d -m 0755 -o root -g root $(DESTDIR)/usr/bin
+	install -m 0755 -o root -g root $(OUT) $(DESTDIR)/usr/bin/
 
 uninstall:
-	rm -f $(DESTDIR)/usr/sbin/$(OUT)
+	rm -f $(DESTDIR)/usr/bin/$(OUT)
 
 clean:
 	rm -f $(OUT) src/*.o 
