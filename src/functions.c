@@ -24,7 +24,8 @@ void print_fanspeed (device_t *adapter)
 void print_temp (device_t *adapter)
 {
 	printf ("    Current Temperature : %d C\n", adapter->temp);
-	printf ("    Target  Temperature : %d C\n", adapter->target_temp_current);
+	if (ADL_Overdrive6_TargetTemperatureData_Get)
+		printf ("    Target  Temperature : %d C\n", adapter->target_temp_current);
 }
 
 void print_clocks (device_t *adapter)
@@ -117,7 +118,9 @@ void set_powertune (device_t *adapter, int threshold)
 
 void set_targettemp (device_t *adapter, int target)
 {
-	if (ADL_Overdrive6_TargetTemperatureData_Set (adapter->real_id, target) == ADL_OK)
+	if (ADL_Overdrive6_TargetTemperatureData_Get &&
+	    ADL_Overdrive6_TargetTemperatureData_Set &&
+	    ADL_Overdrive6_TargetTemperatureData_Set (adapter->real_id, target) == ADL_OK)
 		printf ("    New target temp     : %d\n", target);
 	else
 		printf ("    Failed to set target temperature!\n");

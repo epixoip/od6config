@@ -57,7 +57,8 @@ void get_adapter_info (device_t *adapter)
 	adapter->fan_rpm_current     = fan_info.iFanSpeedRPM;
 	adapter->fan_percent_current = fan_info.iFanSpeedPercent;
 
-	ADL_Overdrive6_TargetTemperatureData_Get (adapter->real_id, &adapter->target_temp_current, &adapter->target_temp_default);
+	if (ADL_Overdrive6_TargetTemperatureData_Get)
+		ADL_Overdrive6_TargetTemperatureData_Get (adapter->real_id, &adapter->target_temp_current, &adapter->target_temp_default);
 	ADL_Overdrive6_Temperature_Get (adapter->real_id, &temp);
 	adapter->temp = (int)(temp / 1000);
 
