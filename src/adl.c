@@ -55,7 +55,7 @@ void *get_func_addr (void *dll, const char *name)
 {
 	void *ptr = dlsym (dll, name);
 
-	if (ptr == NULL)
+	if (ptr == NULL && !strstr(name, "ADL_Overdrive6_TargetTemperatureData_"))
 	{
 		fprintf (stderr, "Error: function '%s' does not exist in ADL library.\n", name);
 		exit (-1);

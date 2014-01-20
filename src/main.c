@@ -123,6 +123,17 @@ int main (int argc, char **argv)
 	int opts = 0;
 	char *subopts, *value;
 	device_t devices[MAX_DEVS] = {{0}};
+	char *env;
+
+	// Prefer $COMPUTE over $DISPLAY and if all else fails, assume :0
+	env = getenv("COMPUTE");
+	if (env && *env)
+		setenv("DISPLAY", env, 1);
+	else {
+		env = getenv("DISPLAY");
+		if (!env || !*env)
+			setenv("DISPLAY", ":0", 1);
+	}
 
 	if (adl_init() < 0)
 	{
