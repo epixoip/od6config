@@ -22,4 +22,5 @@ clean:
 	rm -f $(OUT) src/*.o 
 
 distclean: clean
-	rm -rf ADL_SDK/include
+
+

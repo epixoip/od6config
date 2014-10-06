@@ -34,6 +34,7 @@ void print_clocks (device_t *adapter)
 	printf ("    Current Clocks      : %-d\t\t%-d\n", adapter->core_clock_current, adapter->mem_clock_current);
 	printf ("    Min Clocks          : %-d\t\t%-d\n", adapter->core_clock_custom_range_min, adapter->mem_clock_custom_range_min);
 	printf ("    Peak Clocks         : %-d\t\t%-d\n", adapter->core_clock_custom_range_max, adapter->mem_clock_custom_range_max);
+	printf ("    PowerTune TDP       : %-d%%\n", adapter->pt_current);
 	printf ("    GPU Load            : %-d%%\n", adapter->utilization);
 }
 

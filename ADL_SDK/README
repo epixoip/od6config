@@ -1,9 +1,0 @@
-Download the AMD Display Library SDK version 6.0 or newer from
-http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/
-
-Extract the archive into this directory.
-
-Example:
-
-cd od6config/ADL_SDK/
-unzip ~/ADL_SDK_6.0.zip

@@ -1,0 +1,12 @@
+Source: od6config
+Maintainer: Jeremi Gosney <jgosney@stricture-group.com> 
+Section: misc
+Priority: important
+Standards-Version: 3.9.2
+Build-Depends: build-essential
+
+Package: od6config
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}, fglrx
+Description: configuration tool for AMD Overdrive6 devices
+ configuration tool for AMD Overdrive6 devices
