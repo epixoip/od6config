@@ -7,7 +7,9 @@ Configuration tool for AMD Overdrive6 devices.
 Hastily developed, but mostly feature-complete.
 
 ##Install##
-Download the AMD Display Library SDK 6.0 or newer, and extract the archive into the *ADL_SDK* directory. Then, issue the typical ``make && sudo make install'' to build and install.
+Option 1:  You can issue the traditional *make && sudo make install*
+
+Option 2:  You can build a .deb with *debuild -i -us -uc -b*, then *dpkg -i* the archive.
 
 ##Usage##
 ```
