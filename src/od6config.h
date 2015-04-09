@@ -11,6 +11,8 @@
 #define LINUX
 #define MAX_DEVS 16
 
+typedef enum { false, true } bool;
+
 #include "../ADL_SDK/include/adl_sdk.h"
 
 typedef struct

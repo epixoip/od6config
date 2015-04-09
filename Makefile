@@ -1,5 +1,5 @@
 CC      = cc
-CFLAGS  = -g -O2 -Wall 
+CFLAGS  = -g -O2 -Wall
 OUT     = od6config
 LIBS    = -ldl
 
