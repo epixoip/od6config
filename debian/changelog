@@ -1,4 +1,10 @@
-od6config (1.0) UNRELEASED; urgency=low
+od6config (1.1) precise; urgency=low
+
+  * Fix deps 
+
+ -- Jeremi Gosney <jgosney@sagitta.pw>  Sun, 18 Oct 2015 05:19:39 -0700
+
+od6config (1.0) precise; urgency=low
 
   * Initial release.
 

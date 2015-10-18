@@ -1,5 +1,5 @@
 Source: od6config
-Maintainer: Jeremi Gosney <jgosney@stricture-group.com> 
+Maintainer: Jeremi Gosney <jgosney@sagitta.pw> 
 Section: misc
 Priority: important
 Standards-Version: 3.9.2
@@ -7,6 +7,6 @@ Build-Depends: build-essential
 
 Package: od6config
 Architecture: amd64
-Depends: ${shlibs:Depends}, ${misc:Depends}, fglrx
+Depends: ${shlibs:Depends}, ${misc:Depends}, fglrx | hashstack-amd-driver
 Description: configuration tool for AMD Overdrive6 devices
- configuration tool for AMD Overdrive6 devices
+ A configuration tool for AMD Overdrive6 devices
