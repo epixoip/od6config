@@ -1890,7 +1890,7 @@ typedef struct _ADLOD6StateInfo
 
     /// Variable-sized array of levels. 
     /// The number of elements in the array is specified by iNumberofPerformanceLevels.
-    ADLOD6PerformanceLevel aLevels [1];	
+    ADLOD6PerformanceLevel aLevels [2];	
 
 } ADLOD6StateInfo;
 
