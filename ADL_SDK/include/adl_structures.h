@@ -1050,7 +1050,7 @@ typedef struct ADLODPerformanceLevels
   int iSize;
   int iReserved;
 /// Array of performance state descriptors. Must have ADLODParameters.iNumberOfPerformanceLevels elements.
-  ADLODPerformanceLevel aLevels [1];	
+  ADLODPerformanceLevel aLevels [2];	
 } ADLODPerformanceLevels;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
